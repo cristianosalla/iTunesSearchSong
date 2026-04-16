@@ -13,11 +13,12 @@ jobs:
     runs-on: macos-latest
 
     env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       SCHEME: iTunesSearchSong
       PROJECT: iTunesSearchSong.xcodeproj
       XCODE_VERSION: "26.0"
       IOS_RUNTIME: "26.0"
-      DESTINATION: "platform=iOS Simulator,name=iPad Pro 13-inch (M4),OS=26.0"
+      DESTINATION: 'platform=iOS Simulator,name=iPad Pro 13-inch (M4),OS=26.2'
 
     steps:
       - name: Checkout
