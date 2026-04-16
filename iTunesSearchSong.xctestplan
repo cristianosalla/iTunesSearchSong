@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "04EEA936-B400-476A-B04B-035D3C8F3CBC",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:iTunesSearchSong.xcodeproj",
+        "identifier" : "5B4646C52F8840B800668885",
+        "name" : "iTunesSearchSongTests"
+      }
+    }
+  ],
+  "version" : 1
+}

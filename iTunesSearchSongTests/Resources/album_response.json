@@ -1,0 +1,36 @@
+{
+  "resultCount": 3,
+  "results": [
+    {
+      "wrapperType": "collection",
+      "collectionId": 1,
+      "artistName": "Bruno Mars",
+      "collectionName": "Doo-Wops & Hooligans",
+      "artworkUrl100": "https://example.com/100.jpg"
+    },
+    {
+      "wrapperType": "track",
+      "collectionId": 1,
+      "trackId": 1,
+      "artistName": "Bruno Mars",
+      "collectionName": "Doo-Wops & Hooligans",
+      "trackName": "Just the Way You Are",
+      "previewUrl": "https://example.com/preview1.m4a",
+      "artworkUrl30": "https://example.com/30.jpg",
+      "artworkUrl60": "https://example.com/60.jpg",
+      "artworkUrl100": "https://example.com/100.jpg"
+    },
+    {
+      "wrapperType": "track",
+      "collectionId": 1,
+      "trackId": 2,
+      "artistName": "Bruno Mars",
+      "collectionName": "Doo-Wops & Hooligans",
+      "trackName": "Grenade",
+      "previewUrl": "https://example.com/preview2.m4a",
+      "artworkUrl30": "https://example.com/30.jpg",
+      "artworkUrl60": "https://example.com/60.jpg",
+      "artworkUrl100": "https://example.com/100.jpg"
+    }
+  ]
+}

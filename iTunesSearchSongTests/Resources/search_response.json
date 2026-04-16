@@ -1,0 +1,41 @@
+{
+  "resultCount": 3,
+  "results": [
+    {
+      "wrapperType": "track",
+      "collectionId": 1,
+      "trackId": 1,
+      "artistName": "Bruno Mars",
+      "collectionName": "Doo-Wops & Hooligans",
+      "trackName": "Just the Way You Are",
+      "previewUrl": "https://example.com/preview1.m4a",
+      "artworkUrl30": "https://example.com/30.jpg",
+      "artworkUrl60": "https://example.com/60.jpg",
+      "artworkUrl100": "https://example.com/100.jpg"
+    },
+    {
+      "wrapperType": "track",
+      "collectionId": 1,
+      "trackId": 2,
+      "artistName": "Bruno Mars",
+      "collectionName": "Doo-Wops & Hooligans",
+      "trackName": "Grenade",
+      "previewUrl": "https://example.com/preview2.m4a",
+      "artworkUrl30": "https://example.com/30.jpg",
+      "artworkUrl60": "https://example.com/60.jpg",
+      "artworkUrl100": "https://example.com/100.jpg"
+    },
+    {
+      "wrapperType": "track",
+      "collectionId": 2,
+      "trackId": 3,
+      "artistName": "Bruno Mars",
+      "collectionName": "24K Magic",
+      "trackName": "24K Magic",
+      "previewUrl": "https://example.com/preview3.m4a",
+      "artworkUrl30": "https://example.com/30.jpg",
+      "artworkUrl60": "https://example.com/60.jpg",
+      "artworkUrl100": "https://example.com/100.jpg"
+    }
+  ]
+}

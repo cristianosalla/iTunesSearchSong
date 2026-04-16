@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: macos-latest
+
+    env:
+      SCHEME: iTunesSearchSong
+      PROJECT: iTunesSearchSong.xcodeproj
+      XCODE_VERSION: "26.0"
+      IOS_RUNTIME: "26.0"
+      DESTINATION: "platform=iOS Simulator,name=iPad Pro 13-inch (M4),OS=26.0"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode 26
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ env.XCODE_VERSION }}
+
+      - name: Show Xcode & Swift versions
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Ensure iOS 26 simulator runtime is installed
+        run: |
+          xcodebuild -downloadPlatform iOS -buildVersion ${{ env.IOS_RUNTIME }} || true
+          xcrun simctl list runtimes
+
+      - name: Show available simulators
+        run: xcrun simctl list devices available
+
+      - name: Show project info
+        run: xcodebuild -list -project "$PROJECT"
+
+      - name: Build for testing
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -configuration Debug \
+            SWIFT_VERSION=6.0 \
+            IPHONEOS_DEPLOYMENT_TARGET=26.0 \
+            SWIFT_STRICT_CONCURRENCY=complete \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO | xcpretty || true
+
+      - name: Run tests
+        run: |
+          set -o pipefail
+          xcodebuild test-without-building \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -configuration Debug \
+            -resultBundlePath TestResults.xcresult \
+            SWIFT_VERSION=6.0 \
+            IPHONEOS_DEPLOYMENT_TARGET=26.0 \
+            SWIFT_STRICT_CONCURRENCY=complete \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO | xcpretty --report junit --output build/reports/junit.xml || \
+          (xcodebuild test-without-building \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -configuration Debug \
+            -resultBundlePath TestResults.xcresult \
+            SWIFT_VERSION=6.0 \
+            IPHONEOS_DEPLOYMENT_TARGET=26.0 \
+            SWIFT_STRICT_CONCURRENCY=complete \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO; exit 1)
+
+      - name: Upload xcresult bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults-xcresult
+          path: TestResults.xcresult
+
+      - name: Upload JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report
+          path: build/reports/junit.xml
