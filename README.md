@@ -34,7 +34,7 @@ iTunesSearchSong/
 
 ### Key Patterns
 
-- **`@Observable`** (iOS 17+) for reactive state management across ViewModels and Router
+- **`@Observable`** for reactive state management across ViewModels and Router
 - **Protocol-oriented networking** — `ClientAPIProtocol`, `SearchSongProtocol`, and `FetchAlbumProtocol` enable full mock injection in tests
 - **Centralized design system** — `AppConstants` for layout values, `AppStrings` for localized text, `AppImage`/`AppSymbol` for assets
 - **Discriminated union decoding** — `iTunesResult` enum with custom `Decodable` to handle mixed API responses (albums + tracks)
@@ -49,7 +49,19 @@ iTunesSearchSong/
 
 1. Clone the repository
 2. Open `iTunesSearchSong.xcodeproj` in Xcode
-3. Build and run on a simulator or device (iOS 17+)
+3. Build and run on a simulator or device
+
+## CI / GitHub Actions
+
+The project includes a GitHub Actions workflow that automatically builds and tests the app on every push/pull request to `main`.
+
+**Workflow: `CI`**
+
+- **Triggers:** Push to `main`, pull requests targeting `main`, and manual dispatch
+- **Runner:** `macos-latest`
+- **Xcode version:** 26.0
+- **Destination:** iPad Pro 13-inch (M4), iOS 26.2 Simulator
+- **Swift:** 6.0
 
 ## Testing
 
@@ -69,16 +81,16 @@ Test structure:
 ## Screenshots
 
 ### 1. Splash Screen
-<img width="2360" height="1640" alt="Simulator Screenshot - iPad Air 11-inch (M3) - 2026-04-15 at 23 07 23" src="https://github.com/user-attachments/assets/8b285ba8-168a-4a82-aa7b-3cb9c19f66ab" />
+<img src="https://github.com/user-attachments/assets/8b285ba8-168a-4a82-aa7b-3cb9c19f66ab" />
 
 ### 2. Songs Screen (Home)
 
-<img width="2360" height="1640" alt="Simulator Screenshot - iPad Air 11-inch (M3) - 2026-04-15 at 23 06 48" src="https://github.com/user-attachments/assets/9c117ef0-fc38-4989-834c-8abefcf96581" />
+<img src="https://github.com/user-attachments/assets/9c117ef0-fc38-4989-834c-8abefcf96581" />
 
 ### 3. Song Details (Player)
 
-<img width="2360" height="1640" alt="Simulator Screenshot - iPad Air 11-inch (M3) - 2026-04-15 at 23 07 00" src="https://github.com/user-attachments/assets/f122ce22-c89b-40ea-af96-7e1aec230f65" />
+<img src="https://github.com/user-attachments/assets/f122ce22-c89b-40ea-af96-7e1aec230f65" />
 
 ### 4. Album Screen
 
-<img width="2360" height="1640" alt="Simulator Screenshot - iPad Air 11-inch (M3) - 2026-04-15 at 23 07 05" src="https://github.com/user-attachments/assets/38022f6e-71d1-4a94-a79f-e630db7dd414" />
+<img src="https://github.com/user-attachments/assets/38022f6e-71d1-4a94-a79f-e630db7dd414" />
